@@ -1,0 +1,24 @@
+{% extends "appsong/base_templates.html" %}
+{% load static %}
+
+{% block principal %}
+  <h1>{{titre}}</h1>
+  <fieldset class="filtre1">
+    <legend>Saisie d'une chanson</legend>
+    <form action="" method="post">
+      {{nc_form.as_p}}
+      <p>
+        <button type="submit" name="b_creer" class="button2"><i class="material-icons">Créer</i></button>
+      {% csrf_token %}
+
+      {% if nc_message %}
+        <p>{{nc_message}}</p>
+      {% endif %}
+      </p>
+    </form>
+  </fieldset>
+{% endblock  %}
+   
+{% block pied_page %}
+    
+{% endblock  %}    

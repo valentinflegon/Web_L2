@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css"
+            href="{% static 'appsong/catacha.css' %}" />
+            <title>
+              {% if not chanson %}
+              Erreur : Chanson inconnue
+              {% else %}
+              {{chanson.titre}}
+              {% endif %}
+            </title>
+    </head>
+    
+    <body>
+      {% url 'appsong:page_princ'  as url_page_princ %}
+      {% url 'appsong:gerer_cate'  as  url_page_gerer_cate%}
+      {% url 'appsong:connexion'  as url_connexion %}
+      {% url 'appsong:deconnexion'  as url_deconnexion %}
+      <ul>
+        <li><a href="{{url_page_princ}}">Page principale</a></li>
+        <li><a href="{{url_page_gerer_cate}}">Catégorie</a></li>
+        <a href="{{url_page_princ}}" ><img id="cover1" src="{% static 'appsong/logo.png' %}" alt="Image" ></a>
+        {% if request.session.utilisateur != null %} 
+          <li style="float:right"><a class="active" href="{{url_deconnexion}}">{{request.session.utilisateur}} / Déconnexion </a></li>
+          <img style="float:right" id="cover" src="{% static 'appsong/log.png' %}" alt="Image" >
+        {%else%}
+          <li style="float:right"><a class="active" href="{{url_connexion}}"> Connexion</a></li>
+          
+        {% endif %} 
+        
+      </ul>
+           
+
+
+        <h1>{{chanson.titre}}</h1>
+        <h2>{{chanson.groupe}}</h2>
+       
+        <fieldset class="filtre1">
+          <legend>Ajout d'une catégorie</legend>
+          <form action="" method="post">
+              {{cc_form.as_p}}
+              <h3> <span class="catetexte">Catégorie de la chanson : </span>{{chanson.categorie.all|join:', '}} </h3>
+            <p>
+              <button  style="text-decoration:none" type="submit" name="b_add" class="button2"><i class="material-icons">Ajouter</i></button>
+              <button  style="text-decoration:none" type="submit" name="b_suppr" class="button2"><i class="material-icons">Supprimer</i></button>
+
+              {% csrf_token %}
+            </p>
+          </form>
+          {% if cc_message %}
+           <p>{{cc_message}}</p>
+          {% endif %} 
+        </fieldset>
+       
+
+      
+    <footer>
+     
+        © 2019 simple is better than complex 
+         
+          Copyright Valentin Flegon & Rayan Kallab Debbih - Tous droits réservés 
+     
+      </footer>
+    </body>
+  </html>
+
+          
+       
+    
+    
+    

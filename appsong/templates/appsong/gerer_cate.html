@@ -1,0 +1,27 @@
+{% extends "appsong/base_templates.html" %}
+{% load static %}
+
+{% block principal %}
+<div id="bande_horizontale_cate"> 
+  <h1>{{titre}}</h1>
+  <table>
+    {% for c in categorie %}
+      <tr>
+          <td><img id="cover" src="{% static 'appsong/dossier.png' %}" alt="Image" ></td> 
+        <td> {{c.nom}}</td>   
+        {% url 'appsong:delete' c.id as url %}
+        <td><a style="text-decoration:none" href="{{url}}">Supprimer</a></td>
+        
+      </tr>
+    {% endfor %}
+  </table>
+
+  {% if gc_message %}
+    <p>{{gc_message}}</p>
+  {% endif %}
+{% endblock  %}</div>
+
+{% block pied_page %}        
+  <button class="button" style="vertical-align:middle"><span><a href="{{url_add_cate}}">Ajouter une catégorie</a></span></button>
+  <button class="button" style="vertical-align:middle"><span><a href="{{url_page_princ}}">Retour vers la page principale</a></span></button>
+{% endblock  %} 

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="{% static 'appsong/catacha.css' %}" />
+      <title>
+        {% if not chanson %}
+        Erreur : Chanson inconnue
+        {% else %}
+        {{chanson.titre}}
+        {% endif %}
+      </title>
+    </head>
+
+    <body>
+        {% url 'appsong:page_princ'  as url_page_princ %}
+        {% url 'appsong:gerer_cate'  as  url_page_gerer_cate%}
+        {% url 'appsong:connexion'  as url_connexion %}
+        {% url 'appsong:deconnexion'  as url_deconnexion %}
+        <ul>
+          <li><a href="{{url_page_princ}}">Page principale</a></li>
+          <li><a href="{{url_page_gerer_cate}}">Catégorie</a></li>
+          <a href="{{url_page_princ}}" ><img id="cover1" src="{% static 'appsong/logo.png' %}" alt="Image" ></a>
+          {% if request.session.utilisateur != null %} 
+            <li style="float:right"><a class="active" href="{{url_deconnexion}}">{{request.session.utilisateur}} / Déconnexion </a></li>
+            <img style="float:right" id="cover" src="{% static 'appsong/log.png' %}" alt="Image" >
+          {%else%}
+            <li style="float:right"><a class="active" href="{{url_connexion}}"> Connexion</a></li>
+          {% endif %} 
+        </ul>
+
+        {% if not chanson %}
+          <h1>Chanson inconnue</h1>
+          <p> Erreur : la chanson n'a pas été trouvée </p>
+        {% else %}         
+        <div id="bande_horizontale">
+          <iframe class= 'ytb' width="400" height="250" src="https://www.youtube.com/embed/{{chanson.youtube}}"
+            frameborder="0" allow='accelerometer; autoplay; encrypted-media; gyroscope;
+              picture-in-picture' allowfullscreen></iframe>        
+            <h3>{{chanson.titre}}   {{chanson.groupe}} </h3>
+           <h3> <span class="catetexte">Catégorie de la chanson : </span>{{chanson.categorie.all|join:', '}} </h3>
+            
+
+          {% url 'appsong:cate_of_chanson' chanson.id as the_url %}
+            <button class="button" style="vertical-align:middle"><span><a style="text-decoration:none" href="{{the_url}}">Gérer</a></span></button>         
+            <h2>Paroles</h2>
+            <h4><pre> {{parole.paroles}}</pre> </h4>        
+        {% endif %}  
+        
+        {% url 'appsong:modif_chanson' chanson.id as url_modif_chanson %}
+        <button class="button" style="vertical-align:middle"><span><a href="{{url_page_princ}}">Retour vers la page principale</a></span></button>
+        
+        <button class="button" style="vertical-align:middle"><span><a href="{{url_modif_chanson}}">Modifier</a></span></button>
+        <footer>
+     
+            © 2019 simple is better than complex 
+             
+              Copyright Valentin Flegon & Rayan Kallab Debbih - Tous droits réservés 
+         
+          </footer>
+    </body>
+  </html>
+

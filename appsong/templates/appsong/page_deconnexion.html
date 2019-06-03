@@ -1,0 +1,23 @@
+
+{% extends "appsong/base_templates.html" %}
+{% load static %}
+
+{% block principal %}
+  <h1> ByeBye {{request.session.utilisateur}}   </h1>     
+  <fieldset class="filtre1">
+    <form action="" method="post">   
+      <p>
+        <button type="submit" name="b_deconnexion" class="button2"><i class="material-icons">Déconnexion</i></button>
+        {% csrf_token %}
+      </p>
+    </form>
+    {% if d_message %}
+    <p>{{d_message}}</p>
+    {% endif %}
+  </fieldset>
+{% endblock %}
+
+{% block pied_page %} 
+        
+        
+{% endblock  %}   

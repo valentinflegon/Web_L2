@@ -1,0 +1,25 @@
+{% extends "appsong/base_templates.html" %}
+{% load static %}
+
+{% block principal %}
+  <h1>{{titre}}</h1>
+  <fieldset class="filtre1">
+    <legend>Ajouter une categorie</legend>
+    <form action="" method="post">
+      {{ac_form.as_p}}
+      <p>
+
+         <button type="submit" name="b_add" class="button2"><i class="material-icons">Ajouter</i></button>
+        {% csrf_token %}
+
+    {% if ac_message %}
+      <p>{{ac_message}}</p>
+    {% endif %}
+      </p>
+    </form>
+  </fieldset>
+{% endblock  %}
+
+{% block pied_page %}
+           
+{% endblock %}

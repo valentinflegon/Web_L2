@@ -1,0 +1,35 @@
+{% extends "appsong/base_templates.html" %}
+{% load static %}
+
+{% block principal %}
+  <h1> Veuillez vous connecter  </h1>
+  <fieldset class="filtre1">
+    <form action="" method="post">
+      {{c_form.as_p}}
+      <p>
+        <button type="submit" name="b_connecter" class="button2"><i class="material-icons">Connexion</i></button>
+        {% csrf_token %}
+      </p>
+    </form>
+    {% if c_message %}
+      <p>{{c_message}}</p>
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="filtre1">
+      <form action="" method="post">
+        {{e_form.as_p}}
+        <p>
+          <button type="submit" name="b_enregistrement" class="button2"><i class="material-icons">Enregistrement</i></button>
+          {% csrf_token %}
+        </p>
+      </form>
+      {% if e_message %}
+        <p>{{e_message}}</p>
+      {% endif %}
+  </fieldset>
+{% endblock  %}
+
+{% block pied_page %} 
+             
+{% endblock  %}   

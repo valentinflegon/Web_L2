@@ -1,0 +1,49 @@
+{% extends "appsong/base_templates.html" %}
+{% load static %}
+
+{% block principal %}
+  <div id="bande_horizontale"><h1>{{titre}}</h1>       
+    <div class="cate"> <p> Projet UE Web  </p> 
+      <span class="catetexte">Encadré par Edouard Thiel</span>
+    </div>
+    <h3> Bienvenu sur notre site {{request.session.utilisateur}} </br>
+      vous pouvez écouter ce qui vous chante  </h3>
+                  
+    <form method="GET">
+      <div>
+        <br>
+        <div>
+          <h3><label for="try"> Chercher une musique :</label></h3>  </br>
+            <input id="try" type="text" class="validate" name="regex" value="{{query.0}}">          
+        </div>
+        </br>
+        <button type="submit" class="button2"><i class="material-icons">Chercher</i></button>
+      
+      </div>
+    </form> 
+  </div>
+  <table>
+      <tr>
+      <th></th>
+      <th>Titre</th>
+      <th>Groupe</th>
+      <th>Catégorie</th>
+      </tr>
+      {% for chanson in catalogue %}
+          {% url 'appsong:page_chanson' chanson.id as the_url %}
+          <tr  onClick="location.href='{{the_url}}';">
+          <td> <img id="cover" src="{% static 'appsong/2.png' %}" alt="Image" ></td>
+          <td><a style="text-decoration:none" >{{chanson.titre}}</a> </td>
+          <td>{{chanson.groupe}}</td>
+          <td> {{chanson.categorie.all|join:', '}}</td>      
+          </tr>
+      {% endfor %}
+  </table> 
+{% endblock  %}
+
+{% block pied_page %}
+  </br>  
+  <button  class="button" style="vertical-align:middle"><span><a href="{{url_nouv_chanson}}">Rajouter une chanson</a> </span></button>     
+  <button  class="button" style="vertical-align:middle"><span><a href="{{url_gerer_cate}}">Gérer les catégories</a>  </span></button> 
+{% endblock  %}    
+

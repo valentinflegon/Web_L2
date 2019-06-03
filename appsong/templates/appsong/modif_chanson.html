@@ -1,0 +1,25 @@
+{% extends "appsong/base_templates.html" %}
+{% load static %}
+
+{% block principal %}
+    <h1>{{titre}}</h1>
+    <fieldset class="filtre">
+        <legend>Modification d'une chanson</legend>
+        <form action="" method="post">
+            {{mc_form.as_p}}
+            <p>
+            <button type="submit" name="b_modifier" class="button2"><i class="material-icons">Modifier</i></button>
+            <button type="submit" name="b_supp" class="button2"><i class="material-icons">Supprimer</i></button>
+            {% csrf_token %}
+            </p>
+        </form>
+    </fieldset>
+    {% if mc_message %}
+        <p>{{mc_message}}</p>
+    {% endif %}
+{% endblock  %}
+
+{% block pied_page %}
+
+{% endblock %}
+

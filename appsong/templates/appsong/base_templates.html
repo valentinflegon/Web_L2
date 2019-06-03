@@ -1,0 +1,42 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    {% block titre %}<title>{{titre}}</title>{% endblock %}
+    <link rel="stylesheet" type="text/css" 
+    href="{% static 'appsong/catacha.css' %}"  />
+    {% url 'appsong:page_princ'  as url_page_princ %}
+    {% url 'appsong:gerer_cate'  as  url_page_gerer_cate%}
+    {% url 'appsong:connexion'  as url_connexion %}
+    {% url 'appsong:deconnexion'  as url_deconnexion %}
+  <ul>
+    <li><a href="{{url_page_princ}}">Page principale</a></li>
+    <li><a href="{{url_page_gerer_cate}}">Catégorie</a></li>
+    <a href="{{url_page_princ}}" ><img id="cover1" src="{% static 'appsong/logo.png' %}" alt="Image" ></a>
+    {% if request.session.utilisateur != null %} 
+      <li style="float:right"><a class="active" href="{{url_deconnexion}}">{{request.session.utilisateur}} / Déconnexion </a></li>
+      <img style="float:right" id="cover" src="{% static 'appsong/log.png' %}" alt="Image" >
+    {%else%}
+      <li style="float:right"><a class="active" href="{{url_connexion}}"> Connexion</a></li>
+      
+    {% endif %} 
+    
+  </ul>
+
+    </head>
+  <body>
+      
+    {% block principal %}{% endblock %}
+    {% block pied_page %}{% endblock %}
+    
+    <footer>
+     Voici notre site de chanson </br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+      © 2019 simple is better than complex 
+       
+        Copyright Valentin Flegon & Rayan Kallab Debbih - Tous droits réservés 
+   
+    </footer>
+ </body>
+</html> 
