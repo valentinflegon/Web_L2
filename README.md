@@ -115,5 +115,7 @@ Appliquons les "migrations" :
   $ ./manage.py runserver
   Performing system checks...
   
-C'est bonnn ton site tourne 
+C'est bonnnnnn ton site tourne !!!!!! 
+Mais en local uniquement ..... 
+On va voir comment le mettre en ligne avec Heroku
 
