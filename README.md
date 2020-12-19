@@ -83,6 +83,7 @@ Appliquons les "migrations" :
   Performing system checks...
   
 C'est bonnnnnn ton site tourne !!!!!! 
+Il n'est pas ouf mais c'était un début en web avec Django 
 Mais en local uniquement ..... 
 On va voir comment le mettre en ligne avec Heroku
 
