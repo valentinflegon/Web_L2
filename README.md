@@ -114,6 +114,6 @@ Appliquons les "migrations" :
   
 C'est bonnn ton site tourne 
 
-https://user-images.githubusercontent.com/43956710/102696271-60cde580-422d-11eb-9f67-3d9dbb0e8516.jpg
 
 ![alt tag](https://user-images.githubusercontent.com/43956710/102696271-60cde580-422d-11eb-9f67-3d9dbb0e8516.jpg)
+![alt tag](https://user-images.githubusercontent.com/43956710/102696323-cae68a80-422d-11eb-9f0e-124f48cd05a7.jpg)
