@@ -9,10 +9,8 @@
 Installation: $ sudo apt-get install python3-pip python-virtualenv
 
 Test: $ virtualenv --version
-15.1.0
 
 Python version: $ python3 --version
-Python 3.6.0
 
 On va créer l'environnement virtuel que l'on appelera venv-py35
 $ virtualenv -p python3 venv-py35
